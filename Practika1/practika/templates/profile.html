@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ваш профиль</title>
+</head>
+<body>
+    <h1>{{ user.username }}'s Профиль</h1>
+
+    <div>
+        <!-- Отображение данных профиля пользователя -->
+        <p>Bio: {{ profile.bio }}</p>
+        {% if profile.profile_picture %}
+            <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+</body>
+</html>
